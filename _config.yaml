@@ -27,6 +27,6 @@ ignore:
   - '**/node_modules/**/*node_modules'
 
 deploy:
-  type: github
+  type: git
   repository: https://github.com/loan-qianban/document.git
   branch: master
