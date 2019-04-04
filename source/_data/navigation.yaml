@@ -1,0 +1,33 @@
+{
+  "logo": {
+    "text": "钱伴对接相关文档",
+    "type": "link",
+    "path": "login/index.html"
+  },
+  "main": [
+    {
+      "text": "兼容性测试",
+      "type": "link",
+      "path": "compatibility/index.html"
+    },
+    {
+      "text": "联合登录相关",
+      "type": "link",
+      "path": "login/index.html"
+    },
+    {
+      "text": "数据回传相关",
+      "type": "link",
+      "path": "postBack/index.html"
+    },
+    {
+      "text": "测试验收相关",
+      "type": "link",
+      "path": "test/index.html"
+    },
+    {
+      "text": "SUPPORT AND FEEDBACK",
+      "type": "label"
+    }
+  ]
+}
