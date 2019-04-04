@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>钱伴对接文档 |  </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/document/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/document/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"path":"login/index.html","title":""},"data":{"navigation":{"logo":{"text":"钱伴对接相关文档","type":"link","path":"login/index.html"},"main":[{"text":"兼容性测试","type":"link","path":"compatibility/index.html"},{"text":"联合登录相关","type":"link","path":"login/index.html"},{"text":"数据回传相关","type":"link","path":"postBack/index.html"},{"text":"测试验收相关","type":"link","path":"test/index.html"},{"text":"SUPPORT AND FEEDBACK","type":"label"}]}},"config":{"timezone":"UTC","root":"/document/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/document/login/index.html" class="doc-navbar__logo"><img src="/document/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">钱伴对接相关文档</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p><strong>名称说明：业务方指钱伴/快贷，合作机构为外部导流渠道方</strong></p>
+<h1 id="联合登录"><a href="#联合登录" class="headerlink" title="联合登录"></a>联合登录</h1><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>2019.03.25</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>本文档对接入合作机构做联合登录进行说明，联合登录定义为如果用户在合作机构 App 中已登录，跳转到业务方的 h5 流程后如果为<code>全新用户</code>不再需要用户手动登录，<code>全新用户</code>定义为没有登录过业务方 App 的用户</li>
+</ul>
+<h2 id="合作机构接入流程"><a href="#合作机构接入流程" class="headerlink" title="合作机构接入流程"></a>合作机构接入流程</h2><ol>
+<li>合作机构提交合作意向</li>
+<li>合作机构需求确定</li>
+<li>签订合作协议</li>
+<li>合作机构从业务方获取测试环境 appKey、appSecret等参数，并加载业务方提供的 SDK</li>
+<li>合作机构依据本文档进行系统研发（包括 App 开发）、自测、联调（业务方提供技术支持）</li>
+<li>合作机构自测并联调完毕后，提供 App 测试包，申请测试</li>
+<li>业务方测试人员进行全流程验证和测试</li>
+<li>测试通过，申请正式环境的 appKey 和 appSecret</li>
+<li>上线，并观察线上数据</li>
+<li>后续优化</li>
+</ol>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><ul>
+<li><img src="http://s1.wacdn.com/wis/532/592bc9b61f0732af_1215x711.png" alt="image"></li>
+</ul>
+<h2 id="业务方-SDK-使用简介"><a href="#业务方-SDK-使用简介" class="headerlink" title="业务方 SDK 使用简介"></a>业务方 SDK 使用简介</h2><ul>
+<li>合作机构通过业务方<a href="https://github.com/wacai/wacai-open-sdk" target="_blank" rel="noopener">SDK</a>调用业务方 API 接口。并且，合作机构收到业务方的反馈消息后，也通过业务方 SDK 进行验签，确保消息是来自业务方的合法消息</li>
+</ul>
+<h3 id="maven-依赖"><a href="#maven-依赖" class="headerlink" title="maven 依赖"></a>maven 依赖</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.wacai&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;wacai-openAllInOne-sdk&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.5.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 代码案例</span><br><span class="line"></span><br><span class="line">#### 构建Client和Request</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">WacaiOpenApiClient wacaiOpenApiClient = new WacaiOpenApiClient(&quot;$&#123;appKey&#125;&quot;, &quot;$&#123;appSecret&#125;&quot;);</span><br><span class="line">// 测试联调时使用，将调用请求指向挖财的沙箱环境，生产环境请删除</span><br><span class="line">wacaiOpenApiClient.setGatewayEntryUrl(&quot;http://guard.ngrok.wacaiyun.com/gw/api_entry&quot;);</span><br><span class="line">wacaiOpenApiClient.init();</span><br><span class="line">WacaiOpenApiRequest wacaiOpenApiRequest = new WacaiOpenApiRequest(&quot;$&#123;API名称&#125;&quot;, &quot;$&#123;API版本号&#125;&quot;);</span><br><span class="line">wacaiOpenApiRequest.putBizParam(&quot;约定的参数1&quot;, &quot;34121141242144&quot;);</span><br><span class="line">wacaiOpenApiRequest.putBizParam(&quot;约定的参数2&quot;, &quot;&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="Response："><a href="#Response：" class="headerlink" title="Response："></a>Response：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OrderDeleteResponseObject wacaiOpenApiResponse = wacaiOpenApiClient.invoke(wacaiOpenApiRequest, <span class="keyword">new</span> TypeReference&lt;OrderDeleteResponseObject&gt;() &#123;&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用业务方-SDK-的参数说明"><a href="#使用业务方-SDK-的参数说明" class="headerlink" title="使用业务方 SDK 的参数说明"></a>使用业务方 SDK 的参数说明</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP_KEY</td>
+<td>string</td>
+<td>使用业务方 SDK 时用，相当于用户名，业务方提供</td>
+</tr>
+<tr>
+<td>APP_SECRET</td>
+<td>string</td>
+<td>使用业务方 SDK 时用，相当于密码，业务方提供</td>
+</tr>
+<tr>
+<td>API 名称</td>
+<td>string</td>
+<td>业务方分配给合作机构的 API 名，业务方提供</td>
+</tr>
+<tr>
+<td>API 版本号</td>
+<td>string</td>
+<td>业务方分配给合作机构的 API 版本号，业务方提供</td>
+</tr>
+</tbody>
+</table>
+<h3 id="传给业务方的参数说明"><a href="#传给业务方的参数说明" class="headerlink" title="传给业务方的参数说明"></a>传给业务方的参数说明</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openId</td>
+<td>string</td>
+<td>yes</td>
+<td>标志合作机构的用户 uid</td>
+</tr>
+<tr>
+<td>merchantNo</td>
+<td>string</td>
+<td>yes</td>
+<td>标志合作机构的商户号，业务方提供</td>
+</tr>
+<tr>
+<td>mob</td>
+<td>string</td>
+<td>yes</td>
+<td>用户手机号</td>
+</tr>
+<tr>
+<td>sourceMc</td>
+<td>string</td>
+<td>yes</td>
+<td>业务方分配给合作机构市场码，业务方提供</td>
+</tr>
+<tr>
+<td>sourceAf</td>
+<td>string</td>
+<td>yes</td>
+<td>业务方分配给合作机构的渠道号，业务方提供</td>
+</tr>
+<tr>
+<td>map</td>
+<td>JsonObject</td>
+<td>no</td>
+<td>扩展参数需放在 map 里传给业务方，如姓名手机号等，代码示例<br>  <code>wacaiOpenApiRequest.putBizParam(&quot;map&quot;, {&quot;name&quot;: &quot;xxxxx&quot;, &quot;idNo&quot;: &quot;4242424242424234234&quot;});</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="response说明"><a href="#response说明" class="headerlink" title="response说明"></a>response说明</h3><ul>
+<li>成功时</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;data&quot;: &quot;url&quot;,</span><br><span class="line"> &quot;success&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回异常时</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;errorCode&quot;: &quot;U0029&quot;,</span><br><span class="line">	&quot;errorMsg&quot;: &quot;参数异常&quot;,</span><br><span class="line">	&quot;success&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误信息</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U0029</td>
+<td>参数错误</td>
+<td></td>
+</tr>
+<tr>
+<td>U9999</td>
+<td>服务异常</td>
+<td></td>
+</tr>
+<tr>
+<td>U0076</td>
+<td>没有权限</td>
+</tr>
+</tbody>
+</table>
+<h3 id="业务方-SDK-文档"><a href="#业务方-SDK-文档" class="headerlink" title="业务方 SDK 文档"></a>业务方 SDK 文档</h3><ul>
+<li><a href="https://github.com/wacai/wacai-open-sdk" target="_blank" rel="noopener">业务方 API 网关SDK文档</a></li>
+</ul>
+<h2 id="前端交互"><a href="#前端交互" class="headerlink" title="前端交互"></a>前端交互</h2><h3 id="合作机构跳转到业务方-h5-产品后流程图"><a href="#合作机构跳转到业务方-h5-产品后流程图" class="headerlink" title="合作机构跳转到业务方 h5 产品后流程图"></a>合作机构跳转到业务方 h5 产品后流程图</h3><p><img src="https://s1.wacdn.com/wis/532/f9cde654e9ad952b_735x576.png" alt="image"></p>
+<ul>
+<li>没有登录过业务方 App 的用户被定义为全新用户，只有全新用户才会自动登录</li>
+<li>用户退出后如果没有在业务方 App 登录过，再次进入还会被判定为全新用户，走自动登录</li>
+</ul>
+<h2 id="联调方案"><a href="#联调方案" class="headerlink" title="联调方案"></a>联调方案</h2><ul>
+<li>业务方向合作机构提供相关参数</li>
+<li>合作机构需提供带业务方 h5 产品入口的测试 App，如果需要开白名单等操作要给出相应文档</li>
+<li>如果合作机构要接入业务方内网测试联调，需向业务方提供姓名、手机号，合作机构的同学可通过手机验证码登录临时 vpn，接入业务方内网</li>
+</ul>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/document/script/doc.js"></script>
+
+    
+
+  </body>
+</html>

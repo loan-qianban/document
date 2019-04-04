@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>钱伴对接文档 |  </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/document/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/document/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"path":"test/index.html","title":""},"data":{"navigation":{"logo":{"text":"钱伴对接相关文档","type":"link","path":"login/index.html"},"main":[{"text":"兼容性测试","type":"link","path":"compatibility/index.html"},{"text":"联合登录相关","type":"link","path":"login/index.html"},{"text":"数据回传相关","type":"link","path":"postBack/index.html"},{"text":"测试验收相关","type":"link","path":"test/index.html"},{"text":"SUPPORT AND FEEDBACK","type":"label"}]}},"config":{"timezone":"UTC","root":"/document/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/document/login/index.html" class="doc-navbar__logo"><img src="/document/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">钱伴对接相关文档</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <h3 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试"></a>验收测试</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li>本文档用于接入合作机构在验收测试时参考使用。</li>
+</ul>
+<h4 id="h5流程"><a href="#h5流程" class="headerlink" title="h5流程"></a>h5流程</h4><ul>
+<li><p>主流程：</p>
+<ul>
+<li>登录—基本信息—运营商—绑定银行卡— 绑定信用卡— 提现页面— 身份认证— 模型审批中— 存管开户— 照片审批— 等待放款— 放款成功— 还款</li>
+</ul>
+</li>
+<li><p>注意点：</p>
+<ol>
+<li>如果做了联合登陆的合作方：<strong>新用户</strong>是会做联合登陆的，如果是<strong>挖财的老用户</strong>，安全部门出于安全的考虑，老用户需要跳转至登陆页手动登陆，测试环境登陆验证码为：888888。如果是新用户还需要跳转至登陆页进行登陆，请提供<strong>手机号</strong>，<strong>openid</strong> 可以提供的话更佳。</li>
+<li>如果需要隐藏我方的页面头部，避免出现双头的情况，联系测试同学@朝珠，前端同学@贯石斧</li>
+<li><strong>基本信息</strong>的短信验证码为：888888</li>
+<li>银行卡绑定：测试环境<strong>银行卡短信验证码</strong>为：000000</li>
+<li>银行卡和信用卡需用格式正确的卡，测试环境不一定需要本人的卡</li>
+<li>提现页面<ul>
+<li>关于额度和费率：测试环境为了方便测试会出现各种费限额，请选择和线上一致的费限额：10000元，9个月，否则由于审批模型的费率不一致会导致进入错误状态的页面。</li>
+<li>关于身份认证：如果进入身份认证页面拍完照片提交后一直在转圈或是回到提现页面身份认证仍展示为未完成，属于兼容性问题，请联系测试同学@朝珠，开发同学@贯石斧</li>
+</ul>
+</li>
+<li>进件后联系测试同学@朝珠 帮忙审批以及后续的放款还款操作</li>
+</ol>
+<h4 id="主流程截图"><a href="#主流程截图" class="headerlink" title="主流程截图"></a>主流程截图</h4><ol>
+<li><p>基本信息页</p>
+<p><img src="./photo/01基本信息页.PNG" alt="01基本信息页"></p>
+</li>
+<li><p>运营商绑定页</p>
+<p><img src="./photo/02运营商绑定页.PNG" alt="02运营商绑定页"></p>
+</li>
+<li><p>运营商loading页</p>
+<p><img src="./photo/03运营商loading页.PNG" alt="03运营商loading页"></p>
+</li>
+<li><p>loanding页</p>
+<p><img src="./photo/04loading页.PNG" alt="04loading页"></p>
+</li>
+<li><p>银行卡选择弹窗</p>
+<p><img src="./photo/05选择银行卡弹窗.PNG" alt="05选择银行卡弹窗"></p>
+</li>
+<li><p>绑定银行卡弹窗</p>
+<p><img src="./photo/06绑定银行卡弹窗.PNG" alt="06绑定银行卡弹窗"></p>
+</li>
+<li><p>添加银行卡弹窗</p>
+<p><img src="./photo/07添加信用卡弹窗.PNG" alt="07添加信用卡弹窗"></p>
+</li>
+<li><p>额度结果页</p>
+<p><img src="./photo/09 额度结果页.PNG" alt="09 额度结果页"></p>
+</li>
+<li><p>提现页面</p>
+<p><img src="./photo/10 提现页面.PNG" alt="10 提现页面"></p>
+</li>
+<li><p>身份认证页</p>
+<p><img src="./photo/11 身份认证页.PNG" alt="11 身份认证页"></p>
+</li>
+<li><p>资料完全绑定后提现页</p>
+<p><img src="./photo/12 资料完全绑定后提现页.PNG" alt="12 资料完全绑定后提现页"></p>
+</li>
+<li><p>提现页二次确认弹窗</p>
+<p><img src="./photo/13 提现二次确认弹窗.PNG" alt="13 提现二次确认弹窗"></p>
+</li>
+<li><p>借款详情</p>
+<p><img src="./photo/14 借款详情页.PNG" alt="14 借款详情页"></p>
+</li>
+<li><p>存管开户</p>
+<p><img src="./photo/15 存管开户.PNG" alt="15 存管开户"></p>
+</li>
+<li><p>存管开户页面</p>
+<p><img src="./photo/16 存管开户页面1.PNG" alt="16 存管开户页面1"></p>
+</li>
+<li><p>等待放款</p>
+<p><img src="./photo/18 等待放款页.PNG" alt="18 等待放款页"></p>
+</li>
+<li><p>还款计划表页面</p>
+<p><img src="./photo/19 还款计划表1.PNG" alt="19 还款计划表1"></p>
+</li>
+<li><p>换卡页</p>
+<p><img src="./photo/21 换卡页.PNG" alt="21 换卡页"></p>
+</li>
+<li><p>换卡-新增卡</p>
+<p><img src="./photo/22 换卡-新增卡.PNG" alt="22 换卡-新增卡"></p>
+</li>
+<li><p>收银台</p>
+<p><img src="./photo/23 收银台.PNG" alt="23 收银台"></p>
+</li>
+</ol>
+</li>
+</ul>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/document/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
